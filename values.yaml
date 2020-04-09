@@ -147,36 +147,24 @@ podLabels: {}
 
 # Affinity for pod assignment
 # Ref: https://kubernetes.io/docs/concepts/configuration/assign-pod-node/#affinity-and-anti-affinity
-affinity: 
+affinity:
   nodeAffinity:
-  requiredDuringSchedulingIgnoredDuringExecution:
-    nodeSelectorTerms:
-      - matchExpressions:
-          - key: blockchain
-            operator: In
-            values:
-              - dev		
+    requiredDuringSchedulingIgnoredDuringExecution:
+      nodeSelectorTerms:
+        - matchExpressions:
+            - key: blockchain
+              operator: In
+              values:
+                - dev
 
 # Tolerations for pod assignment
 # Ref: https://kubernetes.io/docs/concepts/configuration/taint-and-toleration/
-tolerations: []
+tolerations: 
+  - effect: NoExecute
+    key: blockchain
+    operator: Equal
+    value: dev
 
 # Node labels for pod assignment
 # Ref: https://kubernetes.io/docs/user-guide/node-selection/
 nodeSelector: {}
-validators:
-  - name: Validator_0
-    address: 4E416FD3D6874846D510B82A040FB2AA69CE8C76
-    nodeAddress: 16F35E3973AE346D8386E0937800D3EF08187D78
-  - name: Validator_1
-    address: CD4B8C444575A3187CF83204EDB0701BB2B0E99F
-    nodeAddress: 5CD119CD0FC4868D364916EA1CF46CEF7B4C0057
-  - name: Validator_2
-    address: 8D84F5623011B5B3FE2D043F1D235390CC0B9366
-    nodeAddress: 1720D6FAE77743F49BCDF5FB0E9512FD35721990
-  - name: Validator_3
-    address: 39824014F410F90CAFE17BFA0F3D0EF80C970A7F
-    nodeAddress: 2804949941BEE390088F69BAA249984816C55D6F
-  - name: Validator_4
-    address: 117ED9201EB79E3F38EF674A7190C89308F0240E
-    nodeAddress: 85DC8911FC10758AF1D26DC236E24390C5846D52
